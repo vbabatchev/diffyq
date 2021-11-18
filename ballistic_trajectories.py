@@ -8,6 +8,7 @@
 # Euler Method to accomplish this.
 
 import math
+import numpy
 import matplotlib.pyplot
 
 h = 0.1 # s

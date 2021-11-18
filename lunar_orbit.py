@@ -8,6 +8,7 @@
 # functions in order to accomplish this.
 
 import math
+import numpy
 import matplotlib.pyplot
 
 moon_distance = 384e6 # m

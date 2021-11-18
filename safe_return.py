@@ -26,7 +26,7 @@ tolerance = 100000. # m
 
 def moon_position(time):
 # Task 1: Compute the moon's position (a vector) at time t. Let it start at moon_initial_angle, not on the horizontal axis.   
-    angle = moon_initial_angle + time/moon_period*2*math.pi
+    angle = moon_initial_angle + time/moon_period*2.0*math.pi
     position = numpy.zeros(2)
     position[0] = moon_distance * math.cos(angle)
     position[1] = moon_distance * math.sin(angle)
@@ -40,11 +40,11 @@ def acceleration(time, position):
     vector_to_moon = moon_pos - position
     vector_to_earth = -position # Earth located at origin
     acc = gravitational_constant * (earth_mass
-                                     / numpy.linalg.norm(vector_to_earth)**3
-                                     * vector_to_earth
-                                     + moon_mass
-                                     / numpy.linalg.norm(vector_to_moon)**3
-                                     * vector_to_moon)
+                                    / numpy.linalg.norm(vector_to_earth)**3
+                                    * vector_to_earth
+                                    + moon_mass
+                                    / numpy.linalg.norm(vector_to_moon)**3
+                                    * vector_to_moon)
 
     return acc  
 
@@ -91,11 +91,10 @@ def apply_boost():
 
         #Task 4: Implement Heun's method with adaptive step size. Note that the time is advanced at the end of this while loop.
         acceleration0 = acceleration(current_time, position)
-        positionE = position * h * velocity
-        velocityE = velocity * h * acceleration0
+        positionE = position + h*velocity
+        velocityE = velocity + h*acceleration0
         positionH = position + h*0.5*(velocity + velocityE)
-        velocityH = velocity + h*0.5*(acceleration0 
-                                      + acceleration(current_time + h, positionE))
+        velocityH = velocity + h*0.5*(acceleration0 + acceleration(current_time + h, positionE))
         velocity = velocityH
         position = positionH
 

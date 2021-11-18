@@ -52,7 +52,7 @@ def heuns_method(num_steps):
 
     ###Heun's Method
     for step in range(num_steps):
-        inititial_acceleration = acceleration(x[step])
+        initial_acceleration = acceleration(x[step])
         xE = x[step] + h * v[step]
         vE = v[step] + h * initial_acceleration
         x[step + 1] = x[step] + h * (v[step] + vE) / 2
